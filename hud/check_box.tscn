@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://briexbpk01670"]
+
+[ext_resource type="Theme" uid="uid://db013stb18dh5" path="res://assets/CheckButton.tres" id="1_4v1ha"]
+[ext_resource type="FontFile" uid="uid://dcy44uqef085x" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="2_u8848"]
+
+[node name="CheckBox" type="CheckBox"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+theme = ExtResource("1_4v1ha")
+theme_override_fonts/font = ExtResource("2_u8848")
+theme_override_font_sizes/font_size = 84
+text = "PLAYER 2"

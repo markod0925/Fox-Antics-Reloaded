@@ -1,0 +1,113 @@
+[gd_scene load_steps=16 format=3 uid="uid://cxxmx8p51fl00"]
+
+[ext_resource type="Texture2D" uid="uid://bmg5r3pj41j1i" path="res://assets/explosion/smoke_2.png" id="1_6t138"]
+[ext_resource type="Script" path="res://dust_effect/speed_dust.gd" id="2_vva23"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2qen"]
+atlas = ExtResource("1_6t138")
+region = Rect2(704, 896, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wawoe"]
+atlas = ExtResource("1_6t138")
+region = Rect2(0, 896, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5inv0"]
+atlas = ExtResource("1_6t138")
+region = Rect2(64, 896, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iav37"]
+atlas = ExtResource("1_6t138")
+region = Rect2(128, 896, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8us2w"]
+atlas = ExtResource("1_6t138")
+region = Rect2(192, 896, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fau5"]
+atlas = ExtResource("1_6t138")
+region = Rect2(256, 896, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y24u6"]
+atlas = ExtResource("1_6t138")
+region = Rect2(320, 896, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryv41"]
+atlas = ExtResource("1_6t138")
+region = Rect2(384, 896, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cy6s2"]
+atlas = ExtResource("1_6t138")
+region = Rect2(448, 896, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ie3n"]
+atlas = ExtResource("1_6t138")
+region = Rect2(512, 896, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8oxl"]
+atlas = ExtResource("1_6t138")
+region = Rect2(576, 896, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3utw5"]
+atlas = ExtResource("1_6t138")
+region = Rect2(640, 896, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y2782"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2qen")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wawoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5inv0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iav37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8us2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fau5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y24u6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryv41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cy6s2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ie3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8oxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3utw5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2qen")
+}],
+"loop": false,
+"name": &"default",
+"speed": 28.0
+}]
+
+[node name="SpeedDust" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_y2782")
+autoplay = "default"
+frame = 12
+frame_progress = 1.0
+script = ExtResource("2_vva23")
+
+[node name="SpeedBoost" type="AudioStreamPlayer2D" parent="."]
+pitch_scale = 1.5
+max_distance = 400.0
+attenuation = 0.517632
+
+[connection signal="finished" from="SpeedBoost" to="." method="_on_speed_boost_finished"]

@@ -1,0 +1,219 @@
+[gd_scene load_steps=18 format=3 uid="uid://8tjkdasevl81"]
+
+[ext_resource type="Script" path="res://main/main.gd" id="1_bcked"]
+[ext_resource type="Texture2D" uid="uid://bmq8fxphge1pj" path="res://assets/backgrounds/game_background_3/game_background_3. 2.png" id="2_u8p7s"]
+[ext_resource type="LabelSettings" uid="uid://cwtjms5qw3br4" path="res://assets/font_themes/LG_64_Main_Title_Brown.tres" id="3_gnhfn"]
+[ext_resource type="LabelSettings" uid="uid://d3hsewic54cfn" path="res://assets/font_themes/LG_32_Highscore_Teal.tres" id="4_rp2x5"]
+[ext_resource type="LabelSettings" uid="uid://ceywoi8pt5pmi" path="res://assets/font_themes/LG_24_Start_Game.tres" id="5_fcakd"]
+[ext_resource type="Texture2D" uid="uid://o3ihiot3ncn2" path="res://assets/ui/menu_buttons/reset_normal_red.png" id="8_m8qjg"]
+[ext_resource type="Texture2D" uid="uid://ct6vdeje02ni4" path="res://assets/ui/menu_buttons/reset_pressed_red.png" id="9_pxolu"]
+[ext_resource type="Texture2D" uid="uid://d0eqbivldbej" path="res://assets/ui/menu_buttons/reset_hover_red.png" id="10_reh8c"]
+[ext_resource type="Script" path="res://main/AcceptDialog.gd" id="12_4321h"]
+[ext_resource type="PackedScene" uid="uid://cyxlsh8b2ngxn" path="res://hud/game_controls.tscn" id="12_awuby"]
+[ext_resource type="PackedScene" uid="uid://cg7kr5fibxbb" path="res://hud/game_story.tscn" id="13_elutf"]
+[ext_resource type="PackedScene" uid="uid://cadtyro5n5el6" path="res://main/menu_buttons.tscn" id="13_f3h0r"]
+[ext_resource type="Script" path="res://main/ResetButton.gd" id="14_3b6w1"]
+
+[sub_resource type="Animation" id="Animation_1qe1y"]
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VB/StartGame:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.7, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1.8025, 1.62451, 2.14355, 1.68179, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.905882), Color(1, 1, 1, 1), Color(1, 1, 1, 0.921569), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameTitle:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1.46409, 1.46409),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.02, 1.02), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_isntf"]
+resource_name = "game_title"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameTitle:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 2.14355, 2.14355, 2.14355, 2.14355, 2.14355),
+"update": 0,
+"values": [0.0, 0.0174533, -0.0174533, -0.0174533, -0.0349066, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_eiick"]
+resource_name = "main_scene"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VB/StartGame:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.7, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.705882), Color(1, 1, 1, 0.356863), Color(1, 1, 1, 0.752941), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j2ekn"]
+_data = {
+"RESET": SubResource("Animation_1qe1y"),
+"game_title": SubResource("Animation_isntf"),
+"main_scene": SubResource("Animation_eiick")
+}
+
+[node name="Main" type="CanvasLayer"]
+script = ExtResource("1_bcked")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.85248
+offset_right = 2.85254
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_u8p7s")
+expand_mode = 3
+
+[node name="GameTitle" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -129.0
+offset_right = 21.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(280, 75)
+text = "foxy antics"
+label_settings = ExtResource("3_gnhfn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelHighScore" type="Label" parent="."]
+offset_left = 31.0
+offset_top = 28.0
+offset_right = 516.0
+offset_bottom = 57.0
+size_flags_horizontal = 4
+text = "highscore: 000"
+label_settings = ExtResource("4_rp2x5")
+vertical_alignment = 1
+
+[node name="VB" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.807
+anchor_right = 0.5
+anchor_bottom = 0.807
+offset_left = -662.0
+offset_top = -461.2
+offset_right = -103.0
+offset_bottom = -399.2
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="space" type="Label" parent="VB"]
+visible = false
+layout_mode = 2
+label_settings = ExtResource("4_rp2x5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartGame" type="Label" parent="VB"]
+visible = false
+layout_mode = 2
+text = "press jump to start"
+label_settings = ExtResource("5_fcakd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuAudio" type="AudioStreamPlayer2D" parent="."]
+autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j2ekn")
+}
+autoplay = "RESET"
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+title = ""
+initial_position = 1
+unresizable = true
+always_on_top = true
+script = ExtResource("12_4321h")
+
+[node name="DialogBG" type="ColorRect" parent="."]
+visible = false
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_right = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.196078, 0.196078, 0.278431, 0.894118)
+
+[node name="MenuButtons" parent="." instance=ExtResource("13_f3h0r")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 166.0
+offset_top = 376.0
+offset_right = 166.0
+offset_bottom = 376.0
+
+[node name="ResetButton" type="TextureButton" parent="."]
+offset_left = 860.0
+offset_top = 20.0
+offset_right = 1340.0
+offset_bottom = 166.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("8_m8qjg")
+texture_pressed = ExtResource("9_pxolu")
+texture_hover = ExtResource("10_reh8c")
+script = ExtResource("14_3b6w1")
+
+[node name="GameStory" parent="." instance=ExtResource("13_elutf")]
+offset_left = 39.0
+offset_top = 345.0
+offset_right = -174.0
+offset_bottom = 275.0
+scale = Vector2(0.4, 0.4)
+
+[node name="GameControls" parent="." instance=ExtResource("12_awuby")]
+offset_left = 607.0
+offset_top = 329.0
+offset_right = 607.0
+offset_bottom = 329.0
+scale = Vector2(0.4, 0.4)
+
+[connection signal="canceled" from="AcceptDialog" to="AcceptDialog" method="_on_canceled"]
+[connection signal="confirmed" from="AcceptDialog" to="AcceptDialog" method="_on_confirmed"]
+[connection signal="pressed" from="ResetButton" to="ResetButton" method="_on_pressed"]

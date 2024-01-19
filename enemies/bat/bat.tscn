@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://bcfk4auknrpmg"]
+
+[ext_resource type="PackedScene" uid="uid://qqf7tt6olgid" path="res://enemies/enemy_base/emeny_base.tscn" id="1_v0sy5"]
+[ext_resource type="Script" path="res://enemies/bat/bat.gd" id="2_8paf4"]
+[ext_resource type="Texture2D" uid="uid://d0b6hknt484kg" path="res://assets/enemies/bat/bat.png" id="3_7uq4t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdpcb"]
+atlas = ExtResource("3_7uq4t")
+region = Rect2(0, 0, 46, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2x7w8"]
+atlas = ExtResource("3_7uq4t")
+region = Rect2(46, 0, 46, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mflsa"]
+atlas = ExtResource("3_7uq4t")
+region = Rect2(92, 0, 46, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gh5af"]
+atlas = ExtResource("3_7uq4t")
+region = Rect2(138, 0, 46, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tlj3"]
+atlas = ExtResource("3_7uq4t")
+region = Rect2(184, 0, 46, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13fcc"]
+atlas = ExtResource("3_7uq4t")
+region = Rect2(230, 0, 46, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50joo"]
+atlas = ExtResource("3_7uq4t")
+region = Rect2(276, 0, 46, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_duasy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdpcb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2x7w8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mflsa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gh5af")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tlj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13fcc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50joo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wykk6"]
+size = Vector2(17, 22)
+
+[node name="Bat" groups=["Enemies"] instance=ExtResource("1_v0sy5")]
+scale = Vector2(0.7, 0.7)
+script = ExtResource("2_8paf4")
+lives = 1
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_duasy")
+autoplay = "default"
+frame = 2
+frame_progress = 0.911772
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(-1.5, -1)
+shape = SubResource("RectangleShape2D_wykk6")
+
+[node name="TurnDetector" type="RayCast2D" parent="." index="5"]
+rotation = 3.14159
+target_position = Vector2(0, 30)
+collide_with_areas = true

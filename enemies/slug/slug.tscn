@@ -1,0 +1,98 @@
+[gd_scene load_steps=13 format=3 uid="uid://bbo38a5f5q8kx"]
+
+[ext_resource type="PackedScene" uid="uid://qqf7tt6olgid" path="res://enemies/enemy_base/emeny_base.tscn" id="1_ttrvq"]
+[ext_resource type="Script" path="res://enemies/slug/slug.gd" id="2_rgh3b"]
+[ext_resource type="Texture2D" uid="uid://carbtdp1docqa" path="res://assets/enemies/slug/slug.png" id="3_m0dg6"]
+[ext_resource type="PackedScene" uid="uid://bv38ff2gd4j1t" path="res://shooter/shooter.tscn" id="4_aaauv"]
+[ext_resource type="PackedScene" uid="uid://cxxmx8p51fl00" path="res://dust_effect/speed_dust.tscn" id="5_bvyfl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlnq0"]
+atlas = ExtResource("3_m0dg6")
+region = Rect2(0, 0, 32, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glqjm"]
+atlas = ExtResource("3_m0dg6")
+region = Rect2(32, 0, 32, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ki21d"]
+atlas = ExtResource("3_m0dg6")
+region = Rect2(64, 0, 32, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca5hn"]
+atlas = ExtResource("3_m0dg6")
+region = Rect2(96, 0, 32, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e171p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlnq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glqjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ki21d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca5hn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0gi8"]
+size = Vector2(21, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nud71"]
+size = Vector2(21, 15)
+
+[node name="Slug" groups=["Enemies"] instance=ExtResource("1_ttrvq")]
+script = ExtResource("2_rgh3b")
+default_facing = null
+points = 2
+speed = null
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_e171p")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(1.5, 2.5)
+shape = SubResource("RectangleShape2D_s0gi8")
+
+[node name="FloorDetection" type="RayCast2D" parent="." index="5"]
+position = Vector2(-13, 1)
+target_position = Vector2(0, 18)
+
+[node name="PlayerDetector" type="RayCast2D" parent="." index="6"]
+rotation = 1.5708
+target_position = Vector2(0, 200)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Shooter" parent="." index="7" instance=ExtResource("4_aaauv")]
+bullet_key = 1
+shoot_delay = 3.0
+
+[node name="GoFaster" type="Timer" parent="." index="8"]
+wait_time = 3.0
+
+[node name="GoNormal" type="Timer" parent="." index="9"]
+wait_time = 4.0
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="10"]
+position = Vector2(1.5, 2.5)
+shape = SubResource("RectangleShape2D_nud71")
+
+[node name="SpeedDust" parent="." index="11" instance=ExtResource("5_bvyfl")]
+visible = false
+z_index = -1
+position = Vector2(1, -1)
+scale = Vector2(0.796875, 0.8125)
+
+[connection signal="timeout" from="GoFaster" to="." method="_on_go_faster_timeout"]
+[connection signal="timeout" from="GoNormal" to="." method="_on_go_normal_timeout"]

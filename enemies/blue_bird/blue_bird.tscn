@@ -1,0 +1,101 @@
+[gd_scene load_steps=15 format=3 uid="uid://cvxw41rdc51lx"]
+
+[ext_resource type="PackedScene" uid="uid://qqf7tt6olgid" path="res://enemies/enemy_base/emeny_base.tscn" id="1_04d7d"]
+[ext_resource type="Script" path="res://BlueBird.gd" id="2_q1om8"]
+[ext_resource type="Texture2D" uid="uid://c8v6c2vco2xwo" path="res://assets/enemies/blue_bird/blue_bird.png" id="3_d11ey"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3opuo"]
+atlas = ExtResource("3_d11ey")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjv1v"]
+atlas = ExtResource("3_d11ey")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e67is"]
+atlas = ExtResource("3_d11ey")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r36pf"]
+atlas = ExtResource("3_d11ey")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0i81"]
+atlas = ExtResource("3_d11ey")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4pwe"]
+atlas = ExtResource("3_d11ey")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45gdc"]
+atlas = ExtResource("3_d11ey")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xiu5v"]
+atlas = ExtResource("3_d11ey")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_offhv"]
+atlas = ExtResource("3_d11ey")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ppbos"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3opuo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjv1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e67is")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r36pf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0i81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4pwe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45gdc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xiu5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_offhv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u76ox"]
+size = Vector2(24, 20)
+
+[node name="BlueBird" groups=["Enemies"] instance=ExtResource("1_04d7d")]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("2_q1om8")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_ppbos")
+autoplay = "default"
+frame_progress = 0.950745
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_u76ox")
+
+[node name="TurnDetector" type="RayCast2D" parent="." index="5"]
+rotation = 1.5708
+target_position = Vector2(0, 30)
+collide_with_areas = true
+
+[node name="BlueBirdSound" type="AudioStreamPlayer2D" parent="." index="6"]
+pitch_scale = 1.2
+max_distance = 180.0

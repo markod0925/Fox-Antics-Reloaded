@@ -1,0 +1,205 @@
+Sounds downloaded from
+https://mixkit.co/free-sound-effects/win/
+
+
+1.0
+finsished game based on the course
+
+1.01
+score does not reset on level transition
+falling into pits reduces lives by one and teleports the player to the beginning of the level
+
+1.02
+killing boss gives player one extra life
+number of lives does not reset on level transistion
+added singleton with player lives
+
+1.03
+added new Game Complete scene after finishing the last level
+added animations to UI texts
+added coin pickup and sound
+added sound for falling into pits
+added fruit pickup sound - apple crunch
+
+1.04
+added possom enemy
+added bunny enemy
+
+1.05
+enemies have varied number of lives (HP) - have to shoot them more times
+boss explodes on death
+enemies flash red when hit
+added sound when enemies hit by a bullet
+added another tilemap (sunny lands)
+
+1.06
+started level base edit
+added sound when boss arrives
+added sound when boss gets hurt
+added sound when boss dies
+added sound for spining ball spikes
+changed sound for completing the level - entering the flag
+added a small delay timer between killing the boss and the flag arrival
+added gem pickup
+animated player health hearts
+
+1.07
+added 4 inherited level scenes
+adjusted base level layout
+fixed a bug when boss could still hurt the player when exploding
+adjusted score label settings on level sceenes
+after fall death player goes invincible
+
+
+1.71
+adjusted scrolling BG y offset to have the backround in pits
+Started Level 1 design
+
+1.76
+Finished Level 1 design
+
+1.77
+Started Level 2 design
+decreased snail`s detection rangeso it stays on one floor of multi floor structures
+player gains a life after finishing a level
+
+1.84
+finished level 2
+added game difficulty buttons
+added reset highscore button
+
+1.85
+confirmation popup for reseting the highscore
+possom now shoots
+
+1.86
+added more props for the background
+minor level changes and decorations
+
+1.87
+changed menu buttons
+added menu buttons textures
+changed main scene bg
+
+1.88
+started level 3
+made night tiles for level 3
+
+1.89
+added new shooting slug enemy that moves faster and slower in a loop, fast moving cannot shoot
+
+1.90
+added life star that gives player extra life
+changed music for each level and main menu
+added HUD gem counter
+added HUD coin counter
+added bee enemy flying back and forth
+
+1.91
+heart number counter
+level 3 progress
+added life start pickup animation
+added double jump
+added night tile sets for level 3 - purple
+
+1.92
+added in-game pause menu UI
+level 1 design changes _ double jump adjustements
+
+1.93
+assets clean up
+added quit button to main menu UI
+added menu button to pause UI
+changed UI font colors
+added pink props
+added desert props
+leve1 and 2 tweaking
+
+1.94
+added fast moving crab enemy
+level 3 design
+some enemies have random speeds
+
+1.95
+added items feedback animation
+added moving blocks
+added spinning saw blades
+level 3 finished
+
+1.96
+level 4 design started
+added flying bird enemy
+added flying bat enemy
+added stomp enemy - serves as a turret 
+added idle mushroom enemy
+
+1.97
+added end game house appear animation
+level 4 design continued
+added dark backgrounds to dungeon parts of the levels
+
+1.98
+added dust effect to house animation
+added rumbling sound to house animation
+added end game winning sound
+added eagle scream to eagle enemy
+
+1.99
+redone end game house animation and implementation
+house animated door
+house animated props
+
+2.00
+finished level 4
+bug fixing
+
+2.01
+level optimizition
+bug fixing
+eagle only cries once
+added moving block sound
+sound volume adjustements
+
+2.02
+added game over sound
+added level win sound
+second jump has a slightly higher pitch sound, volume slightly decreased
+land sound volume increased
+
+2.03
+added waterfall sound
+added blue bird sound
+added frog jump sound
+levels optimizition
+play testing
+
+2.04
+added moving platform sound
+added foxy jump and double jump dust effect
+levels optimizition
+sound optimization
+play testing
+
+2.05
+levels optimizition
+sound optimization
+added slug and crab speed up sound and dust effect
+
+2.06
+added controls and story GUI elements to main screen
+level optimizition
+
+2.07
+now you can see how many coins, gems and stars you have found in a level
+
+2.08
+player camera adjusted for camera smoothing
+smooth camera transition to house reveal animation and back to player after the house is revealed
+more level optimization
+more play testing
+after last cut scene boundry wall is added
+
+2.09
+FINAL VERSION?
+added custom splash screen, icon
+minor level 4 adjustements

@@ -1,0 +1,100 @@
+[gd_scene load_steps=15 format=3 uid="uid://de1wqqdau5yvk"]
+
+[ext_resource type="Texture2D" uid="uid://cab8woe6d65en" path="res://assets/enemies/bee/bee.png" id="1_i0208"]
+[ext_resource type="PackedScene" uid="uid://qqf7tt6olgid" path="res://enemies/enemy_base/emeny_base.tscn" id="1_k7o8t"]
+[ext_resource type="Script" path="res://enemies/bee/bee.gd" id="2_c2k3i"]
+[ext_resource type="AudioStream" uid="uid://bxjua2n41xw7y" path="res://assets/sound/bee_buzz.mp3" id="4_kd2f4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmgbi"]
+atlas = ExtResource("1_i0208")
+region = Rect2(0, 0, 37, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bhyb"]
+atlas = ExtResource("1_i0208")
+region = Rect2(37, 0, 37, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tk3w7"]
+atlas = ExtResource("1_i0208")
+region = Rect2(74, 0, 37, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3s8e"]
+atlas = ExtResource("1_i0208")
+region = Rect2(111, 0, 37, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjy06"]
+atlas = ExtResource("1_i0208")
+region = Rect2(148, 0, 37, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ci15t"]
+atlas = ExtResource("1_i0208")
+region = Rect2(185, 0, 37, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w46ut"]
+atlas = ExtResource("1_i0208")
+region = Rect2(222, 0, 37, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhavt"]
+atlas = ExtResource("1_i0208")
+region = Rect2(259, 0, 37, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t2brl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmgbi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bhyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tk3w7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3s8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjy06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ci15t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w46ut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhavt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h15x7"]
+radius = 7.0
+
+[node name="Bee" groups=["Enemies"] instance=ExtResource("1_k7o8t")]
+collision_mask = 65
+script = ExtResource("2_c2k3i")
+speed = 50.0
+lives = 1
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_t2brl")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CircleShape2D_h15x7")
+
+[node name="TurnDetector" type="RayCast2D" parent="." index="5"]
+rotation = 1.5708
+scale = Vector2(0.7, 0.7)
+target_position = Vector2(1.66103e-06, 38)
+collide_with_areas = true
+
+[node name="BeeBuzzing" type="AudioStreamPlayer2D" parent="." index="6"]
+stream = ExtResource("4_kd2f4")
+volume_db = 10.23
+autoplay = true
+max_distance = 700.0
+attenuation = 1.68179

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyxlsh8b2ngxn"]
+
+[ext_resource type="Texture2D" uid="uid://blfj1rtgkjekq" path="res://assets/ui/game_controls.png" id="1_y14sk"]
+
+[node name="GameControls" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+texture = ExtResource("1_y14sk")
+stretch_mode = 3

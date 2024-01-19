@@ -1,0 +1,93 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6nlp146wecoy"]
+
+[ext_resource type="Script" path="res://dust_effect/dust_effects.gd" id="1_fw3l6"]
+[ext_resource type="PackedScene" uid="uid://d1glm5q2u6q58" path="res://dust_effect/dust_effect.tscn" id="2_c48sn"]
+
+[node name="DustEffects" type="Node2D"]
+z_index = -1
+script = ExtResource("1_fw3l6")
+
+[node name="DustEffect" parent="." groups=["dust effects"] instance=ExtResource("2_c48sn")]
+visible = false
+position = Vector2(-43.2, 51.2)
+scale = Vector2(0.8, 0.8)
+autoplay = "default"
+frame = 4
+frame_progress = 0.472223
+speed_scale = 1.2
+
+[node name="DustEffect4" parent="." groups=["dust effects"] instance=ExtResource("2_c48sn")]
+visible = false
+position = Vector2(19.8, 47.2)
+scale = Vector2(0.8, 0.8)
+autoplay = "default"
+frame = 4
+frame_progress = 0.106834
+speed_scale = 0.8
+
+[node name="DustEffect2" parent="." groups=["dust effects"] instance=ExtResource("2_c48sn")]
+visible = false
+position = Vector2(-27.202, 45.2)
+scale = Vector2(1.2, 1.2)
+autoplay = "default"
+
+[node name="DustEffect5" parent="." groups=["dust effects"] instance=ExtResource("2_c48sn")]
+visible = false
+position = Vector2(-1.00079, 49)
+scale = Vector2(1.5, 1.5)
+autoplay = "default"
+frame_progress = 0.425239
+
+[node name="DustEffect3" parent="." groups=["dust effects"] instance=ExtResource("2_c48sn")]
+visible = false
+position = Vector2(38.798, 48.2)
+scale = Vector2(1.2, 1.2)
+autoplay = "default"
+speed_scale = 1.1
+
+[node name="DustEffect6" parent="." groups=["dust effects"] instance=ExtResource("2_c48sn")]
+visible = false
+position = Vector2(64, 41)
+scale = Vector2(0.8, 0.8)
+autoplay = "default"
+frame = 4
+frame_progress = 0.472223
+speed_scale = 1.2
+
+[node name="DustEffect7" parent="." groups=["dust effects"] instance=ExtResource("2_c48sn")]
+visible = false
+position = Vector2(-122, 40)
+scale = Vector2(0.8, 0.8)
+autoplay = "default"
+frame = 4
+frame_progress = 0.106834
+speed_scale = 0.8
+
+[node name="DustEffect8" parent="." groups=["dust effects"] instance=ExtResource("2_c48sn")]
+visible = false
+position = Vector2(-72, 48)
+scale = Vector2(1.2, 1.2)
+autoplay = "default"
+
+[node name="DustEffect9" parent="." groups=["dust effects"] instance=ExtResource("2_c48sn")]
+visible = false
+position = Vector2(-98, 54)
+scale = Vector2(1.5, 1.5)
+autoplay = "default"
+frame_progress = 0.425239
+
+[node name="DustEffect10" parent="." groups=["dust effects"] instance=ExtResource("2_c48sn")]
+visible = false
+position = Vector2(80, 54)
+scale = Vector2(1.2, 1.2)
+autoplay = "default"
+speed_scale = 1.1
+
+[node name="HouseRevealTimer" type="Timer" parent="."]
+wait_time = 11.3
+one_shot = true
+
+[connection signal="timeout" from="HouseRevealTimer" to="." method="_on_house_reveal_timer_timeout"]
+
+[editable path="DustEffect4"]
+[editable path="DustEffect7"]

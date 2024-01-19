@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://qqf7tt6olgid"]
+
+[ext_resource type="Script" path="res://enemies/enemy_base/emeny_base.gd" id="1_4elqj"]
+
+[sub_resource type="Animation" id="Animation_nex7l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4771j"]
+resource_name = "enemy_hurt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1.8025, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.733333, 0.286275, 0.486275, 1), Color(1, 1, 1, 1), Color(0.733333, 0.286275, 0.486275, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iwgvd"]
+_data = {
+"RESET": SubResource("Animation_nex7l"),
+"enemy_hurt": SubResource("Animation_4771j")
+}
+
+[node name="EmenyBase" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_4elqj")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="EnemyHurt" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_iwgvd")
+}
+speed_scale = 2.0
+
+[node name="EnemyHit" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

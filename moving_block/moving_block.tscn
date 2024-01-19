@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://csdw2e1fdnkna"]
+
+[ext_resource type="Script" path="res://MovingBlock.gd" id="1_62e6v"]
+[ext_resource type="Texture2D" uid="uid://mbxcofabadro" path="res://assets/tiles/golden_block.png" id="2_pwf2l"]
+[ext_resource type="PackedScene" uid="uid://blu6u56nnfci1" path="res://floor_spikes/floor_spikes.tscn" id="3_puyus"]
+[ext_resource type="Texture2D" uid="uid://bjtas62s077kc" path="res://assets/tiles/blue_block.png" id="3_qe4im"]
+[ext_resource type="Texture2D" uid="uid://bb0jf3j1m2ehi" path="res://assets/tiles/face_block.png" id="4_ao6yj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnmaw"]
+size = Vector2(30, 30)
+
+[node name="MovingBlock" type="AnimatableBody2D"]
+collision_mask = 0
+script = ExtResource("1_62e6v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pwf2l")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = ExtResource("3_qe4im")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+texture = ExtResource("4_ao6yj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hnmaw")
+
+[node name="FloorSpikes" parent="." instance=ExtResource("3_puyus")]
+position = Vector2(-8, -12)
+
+[node name="FloorSpikes4" parent="." instance=ExtResource("3_puyus")]
+position = Vector2(8, -12)
+
+[node name="FloorSpikes5" parent="." instance=ExtResource("3_puyus")]
+position = Vector2(-8, 12)
+rotation = -3.14159
+
+[node name="FloorSpikes6" parent="." instance=ExtResource("3_puyus")]
+position = Vector2(8, 12)
+rotation = -3.14159
+
+[node name="FloorSpikes7" parent="." instance=ExtResource("3_puyus")]
+position = Vector2(-12, -8)
+rotation = -1.5708
+
+[node name="FloorSpikes8" parent="." instance=ExtResource("3_puyus")]
+position = Vector2(-12, 8)
+rotation = -1.5708
+
+[node name="FloorSpikes2" parent="." instance=ExtResource("3_puyus")]
+position = Vector2(12, -8)
+rotation = 1.5708
+
+[node name="FloorSpikes3" parent="." instance=ExtResource("3_puyus")]
+position = Vector2(12, 8)
+rotation = 1.5708
+
+[node name="StoneScrape" type="AudioStreamPlayer2D" parent="."]
+volume_db = -5.0
+max_distance = 250.0
+attenuation = 1.8025

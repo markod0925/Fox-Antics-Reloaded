@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://br48wlmfrkxuc"]
+
+[ext_resource type="PackedScene" uid="uid://qqf7tt6olgid" path="res://enemies/enemy_base/emeny_base.tscn" id="1_abk8e"]
+[ext_resource type="Script" path="res://enemies/bunny/bunny.gd" id="2_j8u3t"]
+[ext_resource type="Texture2D" uid="uid://butefmk4mtkat" path="res://assets/enemies/bunny/boss_bunny.png" id="3_lku26"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hajm1"]
+radius = 13.0
+height = 38.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqp8i"]
+atlas = ExtResource("3_lku26")
+region = Rect2(850, 0, 34, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kknyn"]
+atlas = ExtResource("3_lku26")
+region = Rect2(816, 0, 34, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k6fy"]
+atlas = ExtResource("3_lku26")
+region = Rect2(782, 0, 34, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qaq0x"]
+atlas = ExtResource("3_lku26")
+region = Rect2(748, 0, 34, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nxlo"]
+atlas = ExtResource("3_lku26")
+region = Rect2(714, 0, 34, 44)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1601k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqp8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kknyn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5k6fy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qaq0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nxlo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eutrx"]
+radius = 12.0
+height = 36.6667
+
+[node name="bunny" groups=["Enemies"] instance=ExtResource("1_abk8e")]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("2_j8u3t")
+default_facing = 1
+speed = 80.0
+lives = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+visible = false
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_hajm1")
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_1601k")
+autoplay = "default"
+frame = 4
+frame_progress = 0.74185
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(2.38419e-07, 0)
+shape = SubResource("CapsuleShape2D_eutrx")
+
+[node name="FloorDetection" type="RayCast2D" parent="." index="4"]
+position = Vector2(-19, -10)
+target_position = Vector2(0, 30)

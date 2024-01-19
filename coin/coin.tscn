@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://cuny5ocqnl3pp"]
+
+[ext_resource type="Texture2D" uid="uid://ccewkqxcf648e" path="res://assets/items/coin.png" id="1_bgmji"]
+[ext_resource type="Script" path="res://coin/coin.gd" id="1_xt6y5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4jg0t"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txuw2"]
+atlas = ExtResource("1_bgmji")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21bs3"]
+atlas = ExtResource("1_bgmji")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86yh0"]
+atlas = ExtResource("1_bgmji")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u368t"]
+atlas = ExtResource("1_bgmji")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycbiu"]
+atlas = ExtResource("1_bgmji")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qwhvh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txuw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21bs3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86yh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u368t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycbiu")
+}],
+"loop": true,
+"name": &"coin",
+"speed": 8.0
+}]
+
+[node name="Coin" type="Area2D" groups=["Coins"]]
+scale = Vector2(0.8, 0.8)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_xt6y5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4jg0t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qwhvh")
+animation = &"coin"
+autoplay = "coin"
+frame = 3
+frame_progress = 0.281037
+
+[node name="SoundPlayer" type="AudioStreamPlayer2D" parent="."]
+volume_db = 10.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="finished" from="SoundPlayer" to="." method="_on_sound_player_finished"]

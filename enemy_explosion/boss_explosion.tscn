@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://00tonbgdvk34"]
+
+[ext_resource type="Texture2D" uid="uid://cakdfwq0pqjhy" path="res://assets/explosion/enemy-deadth.png" id="1_ws3ff"]
+[ext_resource type="Script" path="res://enemy_explosion/boss_explosion.gd" id="2_y8gkd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uge2q"]
+atlas = ExtResource("1_ws3ff")
+region = Rect2(0, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kbcf"]
+atlas = ExtResource("1_ws3ff")
+region = Rect2(40, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7t0ad"]
+atlas = ExtResource("1_ws3ff")
+region = Rect2(80, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nj1ua"]
+atlas = ExtResource("1_ws3ff")
+region = Rect2(120, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wx8k"]
+atlas = ExtResource("1_ws3ff")
+region = Rect2(160, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wj2hx"]
+atlas = ExtResource("1_ws3ff")
+region = Rect2(200, 0, 40, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wn1cu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uge2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kbcf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7t0ad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nj1ua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wx8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wj2hx")
+}],
+"loop": false,
+"name": &"boss_explosion",
+"speed": 8.0
+}]
+
+[node name="BossExplosion" type="AnimatedSprite2D"]
+position = Vector2(0, 10)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_wn1cu")
+animation = &"boss_explosion"
+autoplay = "boss_explosion"
+script = ExtResource("2_y8gkd")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

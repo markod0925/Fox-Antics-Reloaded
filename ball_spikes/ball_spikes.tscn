@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://n4dqikjpc1m4"]
+
+[ext_resource type="Script" path="res://ball_spikes/ball_spikes.gd" id="1_2cp5a"]
+[ext_resource type="Texture2D" uid="uid://c7r7jktmioium" path="res://assets/danger/spiked_ball.png" id="1_k3fdn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_umobf"]
+radius = 11.0
+
+[sub_resource type="Animation" id="Animation_v8m41"]
+resource_name = "spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-6.28319, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ag8xp"]
+_data = {
+"spin": SubResource("Animation_v8m41")
+}
+
+[node name="BallSpikes" type="PathFollow2D"]
+script = ExtResource("1_2cp5a")
+
+[node name="HitBox" type="Area2D" parent="." groups=["Dangers"]]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="HitBox"]
+rotation = -6.28319
+texture = ExtResource("1_k3fdn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_umobf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HitBox"]
+libraries = {
+"": SubResource("AnimationLibrary_ag8xp")
+}
+autoplay = "spin"
+
+[node name="BallSpikesSpin" type="AudioStreamPlayer2D" parent="."]
+autoplay = true
+max_distance = 150.0
+attenuation = 0.499999

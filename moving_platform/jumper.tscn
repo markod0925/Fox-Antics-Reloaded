@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://beolcxkr6dbbh"]
+
+[ext_resource type="Texture2D" uid="uid://djvcn1vrpdpoj" path="res://assets/tiles/Terrain (16x16).png" id="1_xbp68"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ofkdk"]
+size = Vector2(46, 4)
+
+[node name="Jumper" type="StaticBody2D"]
+scale = Vector2(0.5, 1)
+constant_linear_velocity = Vector2(0, -800)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xbp68")
+region_enabled = true
+region_rect = Rect2(272, 16, 48, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ofkdk")

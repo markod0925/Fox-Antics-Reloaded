@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8t88nlv7ffj5"]
+
+[ext_resource type="Texture2D" uid="uid://jae4eiu1lviu" path="res://assets/item_feedback/item-feedback.png" id="1_btvg4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phtgn"]
+atlas = ExtResource("1_btvg4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lforn"]
+atlas = ExtResource("1_btvg4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smo04"]
+atlas = ExtResource("1_btvg4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf4s8"]
+atlas = ExtResource("1_btvg4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kln8f"]
+atlas = ExtResource("1_btvg4")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kwg2k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phtgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lforn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smo04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf4s8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kln8f")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="LifePickUp" type="AnimatedSprite2D"]
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_kwg2k")
+autoplay = "default"

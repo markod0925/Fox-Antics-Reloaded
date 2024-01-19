@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8vb3tli0rput"]
+
+[ext_resource type="Script" path="res://player_cam/player_cam.gd" id="1_qyf2a"]
+
+[node name="PlayerCam" type="Camera2D"]
+limit_left = -207
+limit_top = -540
+limit_right = 5000
+limit_bottom = 48
+script = ExtResource("1_qyf2a")
+
+[node name="ShakeTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="GameCompleteTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[connection signal="timeout" from="ShakeTimer" to="." method="_on_shake_timer_timeout"]
+[connection signal="timeout" from="GameCompleteTimer" to="." method="_on_game_complete_timer_timeout"]

@@ -1,0 +1,96 @@
+[gd_scene load_steps=20 format=3 uid="uid://cadtyro5n5el6"]
+
+[ext_resource type="Texture2D" uid="uid://cfqsp0fgqw87t" path="res://assets/ui/menu_buttons/easy_normal.png" id="1_rxv77"]
+[ext_resource type="Texture2D" uid="uid://cfemx2bsohri1" path="res://assets/ui/menu_buttons/easy_pressed.png" id="2_34scd"]
+[ext_resource type="Texture2D" uid="uid://72lwmtqs1p3c" path="res://assets/ui/menu_buttons/easy_hover.png" id="3_kxfqk"]
+[ext_resource type="Script" path="res://main/EasyButton.gd" id="4_lxd4v"]
+[ext_resource type="Texture2D" uid="uid://c8ie7sk56ljjo" path="res://assets/ui/menu_buttons/normal_normal.png" id="4_tmoy0"]
+[ext_resource type="Texture2D" uid="uid://dm4rxbw602d6v" path="res://assets/ui/menu_buttons/normal_pressed.png" id="5_sb7gj"]
+[ext_resource type="Texture2D" uid="uid://8h2yci31wmq5" path="res://assets/ui/menu_buttons/normal_hover.png" id="6_idr37"]
+[ext_resource type="Texture2D" uid="uid://dg4skmhniw1hv" path="res://assets/ui/menu_buttons/hard_normal.png" id="7_6mlat"]
+[ext_resource type="Texture2D" uid="uid://bvhfgwjbwq4i3" path="res://assets/ui/menu_buttons/hard_pressed.png" id="8_to2ol"]
+[ext_resource type="Script" path="res://main/NormalButton.gd" id="8_u62e0"]
+[ext_resource type="Texture2D" uid="uid://btfobhwl6jsdp" path="res://assets/ui/menu_buttons/hard_hover.png" id="9_0te0s"]
+[ext_resource type="Script" path="res://main/HardButton.gd" id="10_jisxd"]
+[ext_resource type="Texture2D" uid="uid://bn4gtre7ix5of" path="res://assets/ui/menu_buttons/quit_normal.png" id="13_r8jmu"]
+[ext_resource type="Texture2D" uid="uid://dd5mjvpoca7u3" path="res://assets/ui/menu_buttons/quit_pressed.png" id="14_t34sq"]
+[ext_resource type="Texture2D" uid="uid://d300vk257tkxy" path="res://assets/ui/menu_buttons/quit_hover.png" id="15_uo4u2"]
+[ext_resource type="Script" path="res://main/QuitButton.gd" id="16_v6ywc"]
+[ext_resource type="Script" path="res://game_pause_menu/QuitGameConfirm.gd" id="17_d0c0b"]
+[ext_resource type="PackedScene" uid="uid://briexbpk01670" path="res://hud/check_box.tscn" id="17_tk3du"]
+[ext_resource type="Script" path="res://hud/check_box.gd" id="18_4xx78"]
+
+[node name="MenuButtons" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+theme_override_constants/separation = 20
+
+[node name="EasyButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_rxv77")
+texture_pressed = ExtResource("2_34scd")
+texture_hover = ExtResource("3_kxfqk")
+script = ExtResource("4_lxd4v")
+
+[node name="NormalButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_tmoy0")
+texture_pressed = ExtResource("5_sb7gj")
+texture_hover = ExtResource("6_idr37")
+script = ExtResource("8_u62e0")
+
+[node name="HardButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_6mlat")
+texture_pressed = ExtResource("8_to2ol")
+texture_hover = ExtResource("9_0te0s")
+script = ExtResource("10_jisxd")
+
+[node name="QuitButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("13_r8jmu")
+texture_pressed = ExtResource("14_t34sq")
+texture_hover = ExtResource("15_uo4u2")
+script = ExtResource("16_v6ywc")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="CheckBox" parent="VBoxContainer/MarginContainer" instance=ExtResource("17_tk3du")]
+layout_mode = 2
+script = ExtResource("18_4xx78")
+
+[node name="QuitGameConfirm" type="ConfirmationDialog" parent="."]
+title = "Quit Game"
+initial_position = 1
+size = Vector2i(620, 100)
+dialog_text = "Are you sure? The game will quit to desktop and all your progress will be lost."
+dialog_autowrap = true
+script = ExtResource("17_d0c0b")
+
+[connection signal="pressed" from="VBoxContainer/EasyButton" to="VBoxContainer/EasyButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/NormalButton" to="VBoxContainer/NormalButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/HardButton" to="VBoxContainer/HardButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="VBoxContainer/QuitButton" method="_on_pressed"]
+[connection signal="toggled" from="VBoxContainer/MarginContainer/CheckBox" to="VBoxContainer/MarginContainer/CheckBox" method="_on_toggled"]
+[connection signal="confirmed" from="QuitGameConfirm" to="QuitGameConfirm" method="_on_confirmed"]

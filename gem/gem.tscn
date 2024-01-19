@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://cjip25g8lm5rb"]
+
+[ext_resource type="Texture2D" uid="uid://b6gbxjw08ugvd" path="res://assets/items/gem.png" id="1_77ki5"]
+[ext_resource type="Script" path="res://gem/gem.gd" id="1_tivus"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqbx6"]
+atlas = ExtResource("1_77ki5")
+region = Rect2(0, 0, 15, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqlba"]
+atlas = ExtResource("1_77ki5")
+region = Rect2(15, 0, 15, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtawl"]
+atlas = ExtResource("1_77ki5")
+region = Rect2(30, 0, 15, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6hfc"]
+atlas = ExtResource("1_77ki5")
+region = Rect2(45, 0, 15, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqgfc"]
+atlas = ExtResource("1_77ki5")
+region = Rect2(60, 0, 15, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tv6by"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqbx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqlba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtawl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6hfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqgfc")
+}],
+"loop": true,
+"name": &"gem",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_udp1b"]
+radius = 6.0
+
+[node name="Gem" type="Area2D" groups=["Gems"]]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_tivus")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tv6by")
+animation = &"gem"
+autoplay = "gem"
+frame_progress = 0.496924
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_udp1b")
+
+[node name="GemPickup" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="finished" from="GemPickup" to="." method="_on_gem_pickup_finished"]

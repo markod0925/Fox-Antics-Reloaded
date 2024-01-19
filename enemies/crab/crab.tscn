@@ -1,0 +1,105 @@
+[gd_scene load_steps=13 format=3 uid="uid://7k55r4vi1nye"]
+
+[ext_resource type="Texture2D" uid="uid://cpl1u14rhollm" path="res://assets/enemies/crab/crab-walk.png" id="1_evj4m"]
+[ext_resource type="PackedScene" uid="uid://qqf7tt6olgid" path="res://enemies/enemy_base/emeny_base.tscn" id="1_xyisg"]
+[ext_resource type="Script" path="res://EmenyBase.gd" id="2_bohu2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avtyj"]
+atlas = ExtResource("1_evj4m")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7tro"]
+atlas = ExtResource("1_evj4m")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbrx5"]
+atlas = ExtResource("1_evj4m")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ol7e"]
+atlas = ExtResource("1_evj4m")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2is6"]
+atlas = ExtResource("1_evj4m")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ex7oi"]
+atlas = ExtResource("1_evj4m")
+region = Rect2(240, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ranwt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avtyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7tro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbrx5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ol7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2is6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ex7oi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8jjt"]
+size = Vector2(32, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t6l42"]
+size = Vector2(38.75, 24.375)
+
+[node name="Crab" groups=["Enemies"] instance=ExtResource("1_xyisg")]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("2_bohu2")
+speed = 90.0
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+position = Vector2(0, 1.25)
+sprite_frames = SubResource("SpriteFrames_ranwt")
+autoplay = "default"
+frame = 2
+frame_progress = 0.950001
+
+[node name="HitBox" parent="." index="2"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(-1, 4)
+shape = SubResource("RectangleShape2D_o8jjt")
+
+[node name="FloorDetection" type="RayCast2D" parent="." index="5"]
+position = Vector2(-18, -3)
+scale = Vector2(0.9, 0.9)
+target_position = Vector2(-0.833332, 33.8889)
+
+[node name="PlayerDetector" type="RayCast2D" parent="." index="6"]
+rotation = 1.5708
+target_position = Vector2(0, 200)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="AngryTimer" type="Timer" parent="." index="7"]
+wait_time = 4.0
+
+[node name="AngerRecovery" type="Timer" parent="." index="8"]
+wait_time = 6.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="9"]
+position = Vector2(5.96046e-08, 4.0625)
+shape = SubResource("RectangleShape2D_t6l42")
+
+[connection signal="timeout" from="AngryTimer" to="." method="_on_angry_timer_timeout"]
+[connection signal="timeout" from="AngerRecovery" to="." method="_on_anger_recovery_timeout"]
