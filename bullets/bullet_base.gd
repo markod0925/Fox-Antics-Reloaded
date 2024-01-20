@@ -4,7 +4,9 @@ extends Area2D
 var _direction: Vector2 = Vector2.RIGHT
 var _life_span: float = 20.0
 var _life_time: float = 0.0
-
+var _smoothing_factor : float = 0.95 # Smoothing Factor
+@onready var sprite = $Sprite2D
+@onready var sprite_basic_scale : Vector2 = sprite.scale
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,6 +17,8 @@ func _ready():
 func _process(delta):
 	check_expired(delta)
 	position += _direction * delta
+	sprite.scale = lerp(sprite_basic_scale * Vector2(1.4, 0.5), sprite_basic_scale, 1 - exp(-_smoothing_factor * _life_time))
+	sprite.rotation = _direction.angle()
 
 
 func setup(dir: Vector2, life_span: float, speed: float) -> void:
