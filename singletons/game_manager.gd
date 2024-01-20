@@ -2,6 +2,7 @@ extends Node
 
 
 const GROUP_PLAYER: String = "player"
+const GROUP_CHECKPOINTS: String = "checkpoints"
 const TOTAL_LEVELS : int = 4
 const MAIN_SCENE: PackedScene = preload("res://main/main.tscn")
 enum DIFFICULTY_KEYS {EASY, NORMAL, HARD}

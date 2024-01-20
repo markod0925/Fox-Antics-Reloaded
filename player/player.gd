@@ -91,11 +91,16 @@ func _on_sound_fall_finished():
 	if reduce_lives() == false:
 		return
 	hide()
-	var players_list = get_tree().get_nodes_in_group(GameManager.GROUP_PLAYER)
+	#var players_list = get_tree().get_nodes_in_group(GameManager.GROUP_PLAYER)
+	#var 
 	var target_pos = Vector2(PLAYER_START_POSITION_X, PLAYER_START_POSITION_Y)
-	for playr in players_list:
-		if playr != self and playr.is_visible():
-			target_pos = playr.global_position
+	var dist = global_position.distance_to(target_pos)
+	for checks in get_tree().get_nodes_in_group(GameManager.GROUP_CHECKPOINTS):
+		if checks == null: return
+		var dist_new = global_position.distance_to(checks.global_position)
+		if dist_new < dist:
+			target_pos = checks.global_position
+			dist = dist_new
 	global_position = target_pos
 	show()
 	go_invincible()

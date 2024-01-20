@@ -1512,4 +1512,43 @@ position = Vector2(-146, -33)
 visible = false
 limit_top = -730
 
+[node name="Marker2D" type="Marker2D" parent="Checkpoints" index="0"]
+position = Vector2(189, -31)
+
+[node name="Marker2D2" type="Marker2D" parent="Checkpoints" index="1"]
+position = Vector2(449, -35)
+
+[node name="Marker2D3" type="Marker2D" parent="Checkpoints" index="2"]
+position = Vector2(973, -60)
+
+[node name="Marker2D4" type="Marker2D" parent="Checkpoints" index="3"]
+position = Vector2(1349, -125)
+
+[node name="Marker2D5" type="Marker2D" parent="Checkpoints" index="4"]
+position = Vector2(1873, -36)
+
+[node name="Marker2D6" type="Marker2D" parent="Checkpoints" index="5"]
+position = Vector2(2860, -74)
+
+[node name="Marker2D7" type="Marker2D" parent="Checkpoints" index="6"]
+position = Vector2(3488, -41)
+
+[node name="Marker2D8" type="Marker2D" parent="Checkpoints" index="7"]
+position = Vector2(3876, -111)
+
+[node name="Marker2D9" type="Marker2D" parent="Checkpoints" index="8"]
+position = Vector2(5184, -77)
+
+[node name="Marker2D10" type="Marker2D" parent="Checkpoints" index="9"]
+position = Vector2(6062, -169)
+
+[node name="Marker2D11" type="Marker2D" parent="Checkpoints" index="10"]
+position = Vector2(7838, -43)
+
+[node name="Marker2D12" type="Marker2D" parent="Checkpoints" index="11"]
+position = Vector2(8270, -202)
+
+[node name="Marker2D13" type="Marker2D" parent="Checkpoints" index="12"]
+position = Vector2(9114, -220)
+
 [editable path="LevelFinish"]

@@ -7,6 +7,7 @@ extends Node2D
 @onready var audio_stream_player = $AudioStreamPlayer
 @onready var coins = $Coins
 @onready var player_2 : Player = $Player2
+@onready var checkpoints = $Checkpoints
 
 const MARGIN : float = 20.0
 
@@ -36,7 +37,10 @@ func _ready():
 		player_2.set_physics_process(false)
 		player_2.set_process(false)
 		player_cam.zoom = Vector2(2, 2)		
-	_vp = get_viewport_rect()
+	_vp = get_viewport_rect()	
+	for checks in checkpoints.get_children():
+		if checks == null: return
+		checks.add_to_group(GameManager.GROUP_CHECKPOINTS)
 
 
 func get_number_of_coins() -> int:

@@ -4365,4 +4365,6 @@ sprite_offset = Vector2(0, -490)
 wait_time = 3.0
 one_shot = true
 
+[node name="Checkpoints" type="Node" parent="."]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
